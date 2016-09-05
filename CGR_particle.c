@@ -26,7 +26,7 @@
 #define FALSE 0
 
 /* for the particles */
-#define NUM_PARTICLES 4500
+#define NUM_PARTICLES 4000
 #define GRAVITY 0.0006
 
 /* This is our SDL surface */
@@ -46,15 +46,9 @@ struct s_pf2 {
 // Initialize the fountain
 void InitParticle(int pause){
 	int i;
-	
-	/*
-	if(pause){
-		usleep(200000 + rand() % 2000000);
-	}*/
 
-	qtdParticles1 = rand() % NUM_PARTICLES;	//each interation has a random qt of particles (center)
-	qtdParticles2 = rand() % NUM_PARTICLES;	//each interation has a random qt of particles (right)
-
+	qtdParticles1 = (rand() % NUM_PARTICLES);	//each interation has a random qt of particles (center)
+	qtdParticles2 = (rand() % NUM_PARTICLES);	//each interation has a random qt of particles (right)
 
 	//left fountain
 	for(i = 0; i < qtdParticles1; i++) {
@@ -65,22 +59,22 @@ void InitParticle(int pause){
 		if(angle > 80 && angle < 100){			
 			particles[i].veloc_x = cos((M_PI * angle/180.0)) * (1.5 * velocity);
 			particles[i].veloc_y = sin((M_PI * angle/180.0)) * (1.5 * velocity);
-			particles[i].lifetime = rand() % 200;
+			particles[i].lifetime = rand() % 150;
 			particles[i].x = -1.2;
 			particles[i].y = -2.5;
 		}
 	}
-
+	
 	//right side fountain
 	for(i = 0; i < qtdParticles2; i++) {
-		float velocity = (float)(rand() % 100)/1000.0;
+		float velocity = (float)(rand() % 100)/2000.0;
 		int angle = rand() % 180; //particle angle		
 		
-		if(angle > 110 && angle < 125){			
+		if(angle > 80 && angle < 100){		
 			particles2[i].veloc_x2 = cos((M_PI * angle/180.0)) * (1.7 * velocity);
 			particles2[i].veloc_y2 = sin((M_PI * angle/180.0)) * (1.7 * velocity);
-			particles2[i].lifetime2 = rand() % 200;
-			particles2[i].x2 = 3.0;
+			particles2[i].lifetime2 = rand() % 250;
+			particles2[i].x2 = 1.2;
 			particles2[i].y2 = -2.5;
 		}
 	}
@@ -159,6 +153,7 @@ int drawGLScene( GLvoid ){
 			glVertex3f( particles[i].x, particles[i].y, 0.0f); // draw pixel
 		}
 	}
+	
 	//right fountain
 	for(i = 0; i < qtdParticles2; i++) {
 		if(particles2[i].lifetime2) {
@@ -171,12 +166,13 @@ int drawGLScene( GLvoid ){
 			glVertex3f( particles2[i].x2, particles2[i].y2, 0.0f); // draw pixel
 		}
 	}
+
 	glEnd();
 
     /* Draw it to the screen */
     SDL_GL_SwapBuffers( );
 	
-	if(ative_particles1 < 1500){
+	if((ative_particles1 < 1200) || (ative_particles2 < 1200)){
 		InitParticle(1);
 	}
 
