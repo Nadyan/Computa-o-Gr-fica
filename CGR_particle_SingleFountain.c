@@ -15,6 +15,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <SDL/SDL.h>
+#include <unistd.h>
 
 /* screen width, height, and bit depth */
 #define SCREEN_WIDTH  640
@@ -61,7 +62,7 @@ void InitParticle(int pause){
 			particles[i].veloc_x = cos((M_PI * angle/180.0)) * (1.5 * velocity);
 			particles[i].veloc_y = sin((M_PI * angle/180.0)) * (1.5 * velocity);
 			particles[i].lifetime = rand() % 150;
-			particles[i].x = -1.2;
+			particles[i].x = 0.0;
 			particles[i].y = -2.5;
 		}
 	}
@@ -179,11 +180,12 @@ int drawGLScene( GLvoid ){
 	SDL_GL_SwapBuffers( );
 	
 	//if((ative_particles1 < 1200) || (ative_particles2 < 1200)){
-	if(ative_particles1 < 1200){		
+	if(ative_particles1 < 1200){				
 		InitParticle(1);
 	}
 
-	//usleep(100);
+	usleep(10000); /* **Uncomment usleep when running on a dedicated GPU ** 
+								for frame rate optimization					*/
 	return( TRUE );
 }
 
