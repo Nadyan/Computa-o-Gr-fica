@@ -53,8 +53,7 @@ void SetupRC(){
     glFrontFace(GL_CCW);        // Counter clock-wise polygons face out  
     glEnable(GL_CULL_FACE);     // Do not calculate inside  
   
-  	/*
-    // Enable lighting  
+    // Habilita iluminação 
     glEnable(GL_LIGHTING);  
   	
     // Setup and enable light 0  
@@ -63,7 +62,6 @@ void SetupRC(){
     glLightfv(GL_LIGHT0,GL_DIFFUSE,sourceLight);  
     glLightfv(GL_LIGHT0,GL_POSITION,lightPos);  
     glEnable(GL_LIGHT0);  
-	*/
 
     // Enable color tracking
     glEnable(GL_COLOR_MATERIAL);
@@ -72,7 +70,7 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
     // Background color  
-	glClearColor(0.5f, 0.5f, 0.50f, 1.0f );
+    glClearColor(0.5f, 0.5f, 0.50f, 1.0f );
 }  
   
 // Função para mover o objeto com as setas do teclado 
@@ -116,6 +114,7 @@ void RenderScene(void){
           
         // Corpo do boneco 
         glPushMatrix();  
+
             glColor3f(1.0f, 1.0f, 1.0f);  
             gluSphere(pObj, 0.40f, 26, 13);        // parte de baixo  
           
