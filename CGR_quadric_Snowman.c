@@ -1,15 +1,15 @@
 /*
- *	CGR0001 - UDESC
- *	Nadyan Suriel Pscheidt
- *	Adapted from the code written by Richard S. Wright Jr.  
+ *  CGR0001 - UDESC
+ *  Nadyan Suriel Pscheidt
+ *  Adapted from the code written by Richard S. Wright Jr.  
  *
- * 	Quadric Snowman in OpenGL using the GLUT library
+ *  Quadric Snowman in OpenGL using the GLUT library
  *  gcc snowman.c -lglut -lGL -lGLU -lm -o snowman
  */
 
 #include <GL/glut.h>  // Header File For The GLUT Library 
-#include <GL/gl.h>	  // Header File For The OpenGL32 Library
-#include <GL/glu.h>	  // Header File For The GLu32 Library
+#include <GL/gl.h>    // Header File For The OpenGL32 Library
+#include <GL/glu.h>   // Header File For The GLu32 Library
 #include <math.h>
 #include <unistd.h>
 
@@ -99,9 +99,8 @@ void SpecialKeys(int key, int x, int y){
   
 // Called to draw scene  
 void RenderScene(void){  
-    GLUquadricObj *pObj;    // Quádrica  
+    GLUquadricObj *pObj;   // Quádrica  
  
-	// Limpar a janela 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
   
     // Save the matrix state and do the rotations  
@@ -118,12 +117,12 @@ void RenderScene(void){
         // Corpo do boneco 
         glPushMatrix();  
             glColor3f(1.0f, 1.0f, 1.0f);  
-            gluSphere(pObj, 0.40f, 26, 13);  // parte de baixo  
+            gluSphere(pObj, 0.40f, 26, 13);        // parte de baixo  
           
-            glTranslatef(0.0f, 0.550f, 0.0f); // parte central
+            glTranslatef(0.0f, 0.550f, 0.0f);      // parte central
             gluSphere(pObj, 0.3f, 26, 13);  
           
-            glTranslatef(0.0f, 0.45f, 0.0f); // cabeça
+            glTranslatef(0.0f, 0.45f, 0.0f);       // cabeça
             gluSphere(pObj, 0.24f, 26, 13);  
           
             // olhos 
@@ -139,35 +138,33 @@ void RenderScene(void){
             glTranslatef(0.1f, -0.12f, 0.0f);  
             gluCylinder(pObj, 0.04f, 0.0f, 0.3f, 26, 13); //0.0f no terceiro parametro para ser um cone
 
-			// botões
-			glColor3f(0.0f, 0.0f, 0.0f); 
-			glTranslatef(0.0f, -0.26f, 0.04f);
-			gluSphere(pObj, 0.02f, 26, 13);
+            // botões
+            glColor3f(0.0f, 0.0f, 0.0f); 
+            glTranslatef(0.0f, -0.26f, 0.04f);
+            gluSphere(pObj, 0.02f, 26, 13);
 
-			glTranslatef(0.0f, -0.15f, 0.05f);
-			gluSphere(pObj, 0.02f, 26, 13);
+            glTranslatef(0.0f, -0.15f, 0.05f);
+            gluSphere(pObj, 0.02f, 26, 13);
 
-			glTranslatef(0.0f, -0.15f, -0.025f);
-			gluSphere(pObj, 0.02f, 26, 13);
+            glTranslatef(0.0f, -0.15f, -0.025f);
+            gluSphere(pObj, 0.02f, 26, 13);
 
-			//braço direito 
-			glColor3f(0.5f, 0.35f, 0.05f); 
-			glRotatef(90.0, -0.2f, 1.0f, 0.0f);  
+            //braço direito 
+            glColor3f(0.5f, 0.35f, 0.05f); 
+            glRotatef(90.0, -0.2f, 1.0f, 0.0f);  
             glTranslatef(0.23f, 0.28f, 0.27f);
-			gluCylinder(pObj, 0.015f, 0.015f, 0.6f, 29, 13);
+            gluCylinder(pObj, 0.015f, 0.015f, 0.6f, 29, 13);
 
-			//braço direito
-			glColor3f(0.5f, 0.35f, 0.05f); 
-			glRotatef(30.0, 1.0f, 0.0f, 0.0f);  
+            //braço direito
+            glColor3f(0.5f, 0.35f, 0.05f); 
+            glRotatef(30.0, 1.0f, 0.0f, 0.0f);  
             glTranslatef(0.0f, -0.15f, -0.95f);
-			gluCylinder(pObj, 0.015f, 0.015f, 0.6f, 29, 13);
+            gluCylinder(pObj, 0.015f, 0.015f, 0.6f, 29, 13);
 			        
-		glPopMatrix();        
-	
-    // Restore the matrix state  
+        glPopMatrix();        
+	  
     glPopMatrix();  
-  
-    // Buffer swap  
+    
     glutSwapBuffers();  
 }
   
