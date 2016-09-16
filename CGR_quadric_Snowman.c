@@ -4,7 +4,7 @@
  *  Adapted from the code written by Richard S. Wright Jr.  
  *
  *  Quadric Snowman in OpenGL using the GLUT library
- *  gcc snowman.c -lglut -lGL -lGLU -lm -o snowman
+ *  gcc CGR_quadric_Snowman.c -lglut -lGL -lGLU -lm -o snowman
  */
 
 #include <GL/glut.h>  // Header File For The GLUT Library 
@@ -47,7 +47,7 @@ void SetupRC(){
     // Valores e coordenadas da luz
     GLfloat  whiteLight[] = {0.05f, 0.05f, 0.05f, 1.0f};  
     GLfloat  sourceLight[] = {0.25f, 0.25f, 0.25f, 1.0f};  
-    GLfloat  lightPos[] = {-10.f, 5.0f, 5.0f, 1.0f};  
+    GLfloat  lightPos[] = {-10.f, 5.0f, 10.0f, 1.0f};  
   
     glEnable(GL_DEPTH_TEST);    // Hidden surface removal  
     glFrontFace(GL_CCW);        // Counter clock-wise polygons face out  
@@ -56,21 +56,19 @@ void SetupRC(){
     // Habilita iluminação 
     glEnable(GL_LIGHTING);  
   	
-    // Setup and enable light 0  
+    // Setup da iluminação  
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,whiteLight);  
     glLightfv(GL_LIGHT0,GL_AMBIENT,sourceLight);  
     glLightfv(GL_LIGHT0,GL_DIFFUSE,sourceLight);  
     glLightfv(GL_LIGHT0,GL_POSITION,lightPos);  
     glEnable(GL_LIGHT0);  
 
-    // Enable color tracking
     glEnable(GL_COLOR_MATERIAL);
-      
-    // Set Material properties to follow glColor values  
+       
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
-    // Background color  
-    glClearColor(0.5f, 0.5f, 0.50f, 1.0f );
+    // Background
+	glClearColor(0.3f, 0.8f, 0.8f, 0.0f);
 }  
   
 // Função para mover o objeto com as setas do teclado 
@@ -118,7 +116,7 @@ void RenderScene(void){
             glColor3f(1.0f, 1.0f, 1.0f);  
             gluSphere(pObj, 0.40f, 26, 13);        // parte de baixo  
           
-            glTranslatef(0.0f, 0.550f, 0.0f);      // parte central
+            glTranslatef(0.0f, 0.55f, 0.0f);      // parte central
             gluSphere(pObj, 0.3f, 26, 13);  
           
             glTranslatef(0.0f, 0.45f, 0.0f);       // cabeça
@@ -160,7 +158,7 @@ void RenderScene(void){
             glTranslatef(0.0f, -0.15f, -0.95f);
             gluCylinder(pObj, 0.015f, 0.015f, 0.6f, 29, 13);
 			        
-        glPopMatrix();        
+        glPopMatrix();  
 	  
     glPopMatrix();  
     
