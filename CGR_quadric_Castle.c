@@ -184,7 +184,19 @@ void RenderScene(void){
         glPopMatrix();
 
     glPopMatrix();  
-    
+
+    // Muro frente
+    // ...
+
+    // Muro direita
+    // ...
+
+    // Muro esquerda
+    // ...
+
+    // Muro fundos
+    // ...
+
     glutSwapBuffers();  
 }
   
