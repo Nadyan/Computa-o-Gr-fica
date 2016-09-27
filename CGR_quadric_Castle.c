@@ -92,7 +92,7 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
     // Background
-	glClearColor(0.3f, 0.8f, 0.8f, 0.0f);
+    glClearColor(0.3f, 0.8f, 0.8f, 0.0f);
 }  
   
 // Called to draw scene  
@@ -139,7 +139,7 @@ void RenderScene(void){
             // Torre direita frente
             glColor3f(1.0f, 0.5f, 0.0f);  
             glTranslatef(1.2f, 0.49f, 0.0f);
-			glRotatef(-90.0, 1.0f, 0.0f, 0.0f);
+            glRotatef(-90.0, 1.0f, 0.0f, 0.0f);
             gluCylinder(pObj, 0.4f, 0.0f, 0.7f, 80, 13); //0.0f no terceiro parametro para ser um cone
 
             glColor3f(0.45f, 0.45f, 0.45f);
